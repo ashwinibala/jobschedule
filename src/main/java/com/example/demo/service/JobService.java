@@ -5,7 +5,6 @@ import com.example.demo.model.entity.Job;
 import com.example.demo.repository.JobRepository;
 import com.example.demo.model.requestdto.JobRequest;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

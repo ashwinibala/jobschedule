@@ -6,6 +6,7 @@ import com.example.demo.model.requestdto.JobRequest;
 import com.example.demo.model.response.responsedto.JobResponse;
 import com.example.demo.service.JobService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -30,10 +31,7 @@ public class JobController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<JobResponse> get(@PathVariable int id) {
-        if (id <= 0) {
-            return ResponseEntity.badRequest().build();
-        }
+    public ResponseEntity<JobResponse> get(@Min (1) @PathVariable int id) {
 
         Optional<Job> job = jobService.get(id);
         return job.map(value -> new ResponseEntity<>(JobMapper.Instance.toJobResponse(value), HttpStatus.OK))
